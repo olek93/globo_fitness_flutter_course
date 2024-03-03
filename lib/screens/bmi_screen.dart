@@ -27,7 +27,6 @@ class _BmiScreenState extends State<BmiScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     isSelected = [isMetric, isImperial];
     super.initState();
   }

@@ -15,17 +15,18 @@ class BottomPicker extends StatelessWidget {
               icon: Icon(Icons.home_outlined), label: "Home"),
           BottomNavigationBarItem(
               icon: Icon(Icons.monitor_weight_outlined), label: "BMI"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.cloud_outlined), label: "Weather"),
         ]);
   }
 
   void handleTap(int index, BuildContext context) {
-    switch (index) {
-      case 0:
-        _setRouteWhenNotSetAndClearStack(context, "/");
-        break;
-      case 1:
-        _setRouteWhenNotSetAndInsertIntroScreen(context, "/bmi");
-        break;
+    if (index == 0) {
+      _setRouteWhenNotSetAndClearStack(context, "/");
+    } else if (index == 1) {
+      _setRouteWhenNotSetAndInsertIntroScreen(context, "/bmi");
+    } else if (index == 2) {
+      _setRouteWhenNotSetAndInsertIntroScreen(context, "/weather");
     }
   }
 
@@ -37,12 +38,12 @@ class BottomPicker extends StatelessWidget {
     }
   }
 
-  void _setRouteWhenNotSetAndInsertIntroScreen(BuildContext context, String route) {
+  void _setRouteWhenNotSetAndInsertIntroScreen(
+      BuildContext context, String route) {
     String? currentRoute = GloboRouteObserver().currentRoute;
     if (route != currentRoute) {
       Navigator.popAndPushNamed(context, "/");
       Navigator.pushNamed(context, route);
     }
   }
-
 }
